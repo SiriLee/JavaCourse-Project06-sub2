@@ -39,4 +39,8 @@
 - 辛普森公式使用 $\int_0^\pi \sin(x)\,dx$ 进行测试，在 `n=100` 的复合划分下数值结果逼近 2。
 
 ## Question06
-源代码：
+### 1.准备数据
+源代码：[IntegrationConvergenceTest.java](src/main/java/com/ecnu/driver/IntegrationConvergenceTest.java)
+
+说明：
+- 计算结果定向输出到 [sin_integral.csv](data/sin_integral.csv)
