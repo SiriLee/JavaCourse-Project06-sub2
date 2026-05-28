@@ -4,53 +4,47 @@ import com.ecnu.Function;
 import com.ecnu.DifferentiableFunction;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FunctionTest {
     @Test
-    void testMain() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
+    public void testLinear() {
+        DifferentiableFunction function = new Linear(2.0, 3.0);
 
-        try {
-            main(new String[0]);
-        } finally {
-            System.setOut(originalOut);
-        }
-
-        String expectedOutput = String.join(System.lineSeparator(),
-                "f(1) = 3.0",
-                "f'(1) = 2.0",
-                "",
-                "f(1) = 0.0",
-                "f'(1) = -1.0",
-                "",
-                "f(1) = 0.8414709848078965",
-                "f'(1) = 0.5403023058681398",
-                "",
-                "f(1) = 0.6065306597126334",
-                "f'(1) = -0.6065306597126334");
-
-        assertEquals(expectedOutput, outputStream.toString().stripTrailing());
+        assertEquals(13.0, function.eval(5.0), 1e-10);
+        assertEquals(2.0, function.diff(5.0), 1e-10);
     }
 
-    public static void main(String[] args) {
-        Function[] functions = new Function[4];
-        functions[0] = new Linear(2, 1); // 2x + 1
-        functions[1] = new Quadratic(1, -3, 2); // x^2 - 3x + 2
-        functions[2] = new Sin(1, 0); // sin(x)
-        functions[3] = new NormalPDF(0, 1); // N(0, 1)
-        for (Function f : functions) {
-            System.out.println("f(1) = " + f.eval(1));
-            if (f instanceof DifferentiableFunction) {
-                DifferentiableFunction df = (DifferentiableFunction) f;
-                System.out.println("f'(1) = " + df.diff(1));
-            }
-            System.out.println();
-        }
+    @Test
+    public void testQuadratic() {
+        DifferentiableFunction function = new Quadratic(2.0, 3.0, 4.0);
+
+        assertEquals(18.0, function.eval(2.0), 1e-10);
+        assertEquals(11.0, function.diff(2.0), 1e-10);
+    }
+
+    @Test
+    public void testSin() {
+        DifferentiableFunction function = new Sin(1.0, 0.0);
+
+        assertEquals(1.0, function.eval(Math.PI / 2), 1e-10);
+        assertEquals(0.0, function.diff(Math.PI / 2), 1e-10);
+    }
+
+    @Test
+    public void testNormalPDF() {
+        DifferentiableFunction function = new NormalPDF(0.0, 2.0);
+
+        assertEquals(1.0, function.eval(0.0), 1e-10);
+        assertEquals(0.0, function.diff(0.0), 1e-10);
+        assertEquals(Math.exp(-0.5), function.eval(2.0), 1e-10);
+        assertEquals(-0.5 * Math.exp(-0.5), function.diff(2.0), 1e-10);
+    }
+
+    @Test
+    public void testFunctionPolymorphism() {
+        Function function = new Linear(-1.5, 4.0);
+
+        assertEquals(1.0, function.eval(2.0), 1e-10);
     }
 }
