@@ -2,7 +2,6 @@ package com.ecnu.function;
 
 import com.ecnu.Function;
 import com.ecnu.DifferentiableFunction;
-import com.ecnu.function.*;
 
 public class FunctionTest {
     public static void main(String[] args) {
