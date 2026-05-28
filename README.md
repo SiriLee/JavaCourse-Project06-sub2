@@ -31,9 +31,12 @@
 - 测试覆盖了线性函数、二次函数、正弦函数的根求解结果，并验证了对没有实根的正态分布函数会抛出异常。
 
 ## Question05
-源代码：[NewtonCatos.java](src/main/java/com/ecnu/integration/NewtonCatos.java)
+源代码：[NewtonCotes.java](src/main/java/com/ecnu/integration/NewtonCotes.java)
 
 测试说明：
 - [NewtonCotesTest.java](src/test/java/com/ecnu/integration/NewtonCotesTest.java) 主要验证数值积分公式的正确性。
 - 梯形公式使用线性函数进行测试，验证一次区间积分结果与解析积分一致。
 - 辛普森公式使用 $\int_0^\pi \sin(x)\,dx$ 进行测试，单区间公式的结果为 $2\pi/3$，用于验证实现是否与公式一致。
+
+## Question06
+源代码：
