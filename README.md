@@ -87,7 +87,7 @@ java -cp "target/classes;$cp" com.ecnu.Main
 - Simpson 公式收敛速度明显快于梯形公式：当 \( n \approx 40 \) 时，Simpson 曲线已几乎与真实值重合；梯形公式需 \( n \approx 200 \) 才能达到相近精度。
 
 **参考**：
-[Graph1.png](imgs/Graph1.png)
+![Graph1.png](imgs/Graph1.png)
 
 #### 图2：绝对误差双对数图
 - **横轴**：\( n \)（以 10 为底对数坐标）
@@ -101,7 +101,7 @@ java -cp "target/classes;$cp" com.ecnu.Main
 - 同一 \( n \) 下，Simpson 误差显著小于梯形误差（相差 2~3 个数量级）。
 
 **参考**：
-[Graph2.png](imgs/Graph2.png)
+![Graph2.png](imgs/Graph2.png)
 
 > 注：实际斜率可能因函数二阶、四阶导数的影响略有波动，但整体趋势符合理论分析。
 
